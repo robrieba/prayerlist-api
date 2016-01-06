@@ -10,6 +10,15 @@ class Api::PrayerRequestsController < ApiController
     end
   end
 
+  def update
+    prayer_request = PrayerRequest.find(params[:id])
+    if prayer_request.update(prayer_request_params)
+      render json: prayer_request, status: :success
+    else
+      render json: { errors: prayer_request.errors.full_messages }, status: :unprocessable_entity
+    end
+  end
+
   def prayer_request_params
     params.require(:prayer_request).permit(:name, :request)
   end

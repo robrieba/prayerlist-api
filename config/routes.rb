@@ -6,7 +6,7 @@ Rails.application.routes.draw do
     end
 
     resources :lists, only: [] do
-      resources :prayer_requests, only: [:create]
+      resources :prayer_requests, only: [:create, :update]
     end
 
     resources :prayer_requests, only: [:destroy]
