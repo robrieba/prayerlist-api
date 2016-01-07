@@ -1,4 +1,4 @@
-class Api::PrayerRequestsController < ApiController
+class Api::V1::PrayerRequestsController < ApiController
   before_action :authenticated?
 
   def create

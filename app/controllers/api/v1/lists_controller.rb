@@ -1,4 +1,4 @@
-class Api::ListsController < ApiController
+class Api::V1::ListsController < ApiController
   before_action :authenticated?
 
   def create
