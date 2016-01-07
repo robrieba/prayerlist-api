@@ -4,7 +4,13 @@ class Api::V1::UsersController < ApiController
 
   def index
     users = User.all
-    render json: users, each_serializer: UserSerializer
+    # If the request is stale according to the given timestamp and etag value
+    # (i.e. it needs to be processed again) then execute this block
+    users.each do |u|
+      if stale?(u)
+        render json: users, each_serializer: UserSerializer
+      end
+    end
   end
 
   def create
